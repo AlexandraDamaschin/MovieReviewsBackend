@@ -31,3 +31,4 @@ namespace MovieReviewsBackend.Models.MovieModels
         [Display(Name = "Star Rating")]
         public int StarRating { get; set; }
     }
+}
