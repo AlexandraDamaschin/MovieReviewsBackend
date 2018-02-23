@@ -1,0 +1,21 @@
+﻿
+﻿--------------------------------------------------------------------------------------------------------------------------------
+First 
+enable migrations for a certain context in a certain folder
+Enable-Migrations -ContextTypeName MovieReviewsBackend.Models.ApplicationDbContext 
+Enable-Migrations -ContextTypeName MovieReviewsBackend.Models.MovieModels.MovieDbContext -MigrationsDirectory Migrations\MovieMigrations
+
+--------------------------------------------------------------------------------------------------------------------------------
+Second 
+Add migrations and update database
+main migration 
+Add-Migration -ConfigurationTypeName MovieReviewsBackend.Migrations.Configuration
+Update-Database -ConfigurationTypeName MovieReviewsBackend.Migrations.Configuration
+
+for a certain migration
+Add-Migration -ConfigurationTypeName MovieReviewsBackend.Migrations.MovieMigrations.Configuration
+Update-Database -ConfigurationTypeName MovieReviewsBackend.Migrations.MovieMigrations.Configuration
+
+--------------------------------------------------------------------------------------------------------------------------------
+command to create a script with entire db
+Update-Database -Script -SourceMigration: $InitialDatabase 
