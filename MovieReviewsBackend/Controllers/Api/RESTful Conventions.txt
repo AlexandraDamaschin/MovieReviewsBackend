@@ -1,0 +1,18 @@
+﻿API
+/api/users
+
+--get a list of reviews
+GET /api/reviews
+--get a single review
+GET /api/reviews/1
+
+--add/create  a review 
+POST  /api/reviews/
+
+--update review
+PUT /api/reviews/1
+
+--delete a review
+DELETE /api/reviews/1
+
+Chrome script debugging in Visual Studio is enabled
