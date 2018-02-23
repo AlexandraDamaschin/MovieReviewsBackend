@@ -1,5 +1,6 @@
 namespace MovieReviewsBackend.Migrations.MovieMigrations
 {
+    using MovieReviewsBackend.Models.MovieModels;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,18 +16,46 @@ namespace MovieReviewsBackend.Migrations.MovieMigrations
 
         protected override void Seed(MovieReviewsBackend.Models.MovieModels.MovieDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            //seding methods
+            // SeedReviews(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        //seedReviews
+        private void SeedReviews(MovieDbContext context)
+        {
+            context.Reviews.AddOrUpdate(u => u.ReviewId, new Review
+            {
+                UserId = 6,
+                ImdbId = "tt0099785",
+                ReviewComment = "uuu",
+                DateCreated = DateTime.Now,
+                StarRating = 5
+            });
+
+            context.Reviews.AddOrUpdate(u => u.ReviewId, new Review
+            {
+                UserId = 6,
+                ImdbId = "tt0099785",
+                ReviewComment = "uuu nice",
+                DateCreated = DateTime.Now,
+                StarRating = 5
+            });
+            context.Reviews.AddOrUpdate(u => u.ReviewId, new Review
+            {
+                UserId = 7,
+                ImdbId = "tt0099799",
+                ReviewComment = "noooo",
+                DateCreated = DateTime.Now,
+                StarRating = 1
+            });
+            context.Reviews.AddOrUpdate(u => u.ReviewId, new Review
+            {
+                UserId = 7,
+                ImdbId = "tt0099799",
+                ReviewComment = "noo ugly",
+                DateCreated = DateTime.Now,
+                StarRating = 1
+            });
         }
     }
 }
