@@ -6,7 +6,12 @@ namespace MovieReviewsBackend.Data
 {
     public class ApplicationDbContext: IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        //public ApplicationDbContext(DbContextOptions options) : base(options)
+        //{
+        //}
+
+        public ApplicationDbContext()
+        : base("DefaultConnection")
         {
         }
 

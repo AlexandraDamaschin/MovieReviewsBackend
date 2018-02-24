@@ -4,6 +4,8 @@ First
 enable migrations for a certain context in a certain folder
 Enable-Migrations -ContextTypeName MovieReviewsBackend.Models.ApplicationDbContext 
 Enable-Migrations -ContextTypeName MovieReviewsBackend.Models.MovieModels.MovieDbContext -MigrationsDirectory Migrations\MovieMigrations
+Enable-Migrations -ContextTypeName MovieReviewsBackend.Models.Entities.ApplicationDbContext -MigrationsDirectory Migrations\MovieMigrations
+
 
 --------------------------------------------------------------------------------------------------------------------------------
 Second 

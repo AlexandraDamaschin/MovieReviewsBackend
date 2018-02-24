@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Owin;
-using MovieReviewsBackend.Data;
+﻿using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(MovieReviewsBackend.Startup))]
@@ -19,13 +12,13 @@ namespace MovieReviewsBackend
             ConfigureAuth(app);
         }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-            b => b.MigrationsAssembly("DotNetGigs")));
-        }
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    // Add framework services.
+        //    services.AddDbContext<ApplicationDbContext>(options =>
+        //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+        //    b => b.MigrationsAssembly("DotNetGigs")));
+        //}
 
     }
 }
