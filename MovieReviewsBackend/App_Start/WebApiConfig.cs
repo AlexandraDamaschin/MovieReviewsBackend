@@ -2,9 +2,7 @@
 using Newtonsoft.Json;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 
 namespace MovieReviewsBackend
 {
