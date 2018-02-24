@@ -306,7 +306,6 @@
     <Compile Include="Controllers\Api\ReviewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="DTOs\ReviewDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -319,8 +318,6 @@
     <Compile Include="Migrations\MovieMigrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Entities\AppUser.cs" />
-    <Compile Include="Models\Entities\Reviewer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MovieModels\MovieDbContext.cs" />
     <Compile Include="Models\MovieModels\Review.cs" />
@@ -408,7 +405,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
