@@ -1,10 +1,10 @@
-﻿using AutoMapper;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Mvc;
-using MovieReviewsBackend.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using MovieReviewsBackend.ViewModels;
+using AutoMapper;
 using MovieReviewsBackend.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using MovieReviewsBackend.Models;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
@@ -35,9 +35,9 @@ namespace MovieReviewsBackend.Controllers.Api
 
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
-            if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
+            //if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
 
-            await _appDbContext.Reviewers.AddAsync(new Reviewer { IdentityId = userIdentity.Id, Location = model.Location });
+            //await _appDbContext.Reviewers.AddAsync(new Reviewer { IdentityId = userIdentity.Id, Location = model.Location });
             await _appDbContext.SaveChangesAsync();
 
             return new OkObjectResult("Account created");
