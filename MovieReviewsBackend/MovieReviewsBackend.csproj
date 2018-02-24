@@ -306,7 +306,11 @@
     <Compile Include="Controllers\Api\ReviewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201802241930027_ReviewerTbl.cs" />
+    <Compile Include="Migrations\201802241930027_ReviewerTbl.Designer.cs">
+      <DependentUpon>201802241930027_ReviewerTbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\ApplicationDbContext.cs" />
     <Compile Include="DTOs\ReviewDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -443,6 +447,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802241930027_ReviewerTbl.resx">
+      <DependentUpon>201802241930027_ReviewerTbl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\MovieMigrations\201802231524460_InitialMigration.resx">
       <DependentUpon>201802231524460_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
