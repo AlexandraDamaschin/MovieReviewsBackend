@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -14,8 +14,10 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using MovieReviewsBackend.Models;
+using MovieReviewsBackend.Models.Entities;
 using MovieReviewsBackend.Providers;
 using MovieReviewsBackend.Results;
+
 
 namespace MovieReviewsBackend.Controllers
 {
@@ -25,6 +27,10 @@ namespace MovieReviewsBackend.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+
+        //added for login
+        private readonly ApplicationDbContext _appDbContext;
+        private readonly IMapper _mapper;
 
         public AccountController()
         {
@@ -64,6 +70,29 @@ namespace MovieReviewsBackend.Controllers
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
+        }
+
+        //POST api/accounts
+        //post accounts from angular frontend
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var userIdentity = _mapper.Map<AppUser>(model);
+
+            var result = await _userManager.CreateAsync(userIdentity, model.Password);
+
+            if (!result.Succeeded)
+                return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
+
+            await _appDbContext.Reviewers.AddAsync(new Reviewer { IdentityId = userIdentity.Id, Location = model.Location });
+            await _appDbContext.SaveChangesAsync();
+
+            return new OkObjectResult("Account created");
         }
 
         // POST api/Account/Logout
