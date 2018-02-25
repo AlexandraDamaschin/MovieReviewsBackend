@@ -35,12 +35,13 @@ namespace MovieReviewsBackend.Controllers.Api
 
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
-            //if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
+            if (!result.Succeeded)
+                return BadRequest(ModelState);
 
             //await _appDbContext.Reviewers.AddAsync(new Reviewer { IdentityId = userIdentity.Id, Location = model.Location });
             await _appDbContext.SaveChangesAsync();
 
-            return new OkObjectResult("Account created");
+            return Ok("Account created");
         }
     }
 }
