@@ -8,7 +8,6 @@ using MovieReviewsBackend.Models;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
-    [Route("api/[controller]")]
     public class AccountsController : Controller
     {
         private readonly ApplicationDbContext _appDbContext;
@@ -23,6 +22,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         // POST api/accounts
+        [Route("api/accounts")]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
         {
@@ -32,16 +32,17 @@ namespace MovieReviewsBackend.Controllers.Api
             }
 
             var userIdentity = _mapper.Map<AppUser>(model);
+          
 
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
             if (!result.Succeeded)
                 return BadRequest(ModelState);
 
-            //await _appDbContext.Reviewers.AddAsync(new Reviewer { IdentityId = userIdentity.Id, Location = model.Location });
+            await _appDbContext.Reviewers.AddAsync(new Reviewer { IdentityId = userIdentity.Id, Location = model.Location });
             await _appDbContext.SaveChangesAsync();
 
-            return Ok("Account created");
+            return new OkResult();
         }
     }
 }
