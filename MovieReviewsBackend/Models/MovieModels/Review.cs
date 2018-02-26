@@ -21,6 +21,9 @@ namespace MovieReviewsBackend.Models.MovieModels
         [Display(Name = "Imdb Id")]
         public string ImdbId { get; set; }
 
+        [Display(Name = "Image Url")]
+        public string ImageUrl { get; set; }
+
         [Display(Name = "Review Comment")]
         public string ReviewComment { get; set; }
 

@@ -589,6 +589,10 @@
     <Compile Include="Migrations\MovieMigrations\201802231524460_InitialMigration.Designer.cs">
       <DependentUpon>201802231524460_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\MovieMigrations\201802261530105_ImageUrlColumn.cs" />
+    <Compile Include="Migrations\MovieMigrations\201802261530105_ImageUrlColumn.Designer.cs">
+      <DependentUpon>201802261530105_ImageUrlColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\MovieMigrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -716,6 +720,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\MovieMigrations\201802231524460_InitialMigration.resx">
       <DependentUpon>201802231524460_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\MovieMigrations\201802261530105_ImageUrlColumn.resx">
+      <DependentUpon>201802261530105_ImageUrlColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
