@@ -1,5 +1,8 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Owin;
 using Owin;
+using Microsoft.Extensions.DependencyInjection;
 
 
 [assembly: OwinStartup(typeof(MovieReviewsBackend.Startup))]
@@ -8,6 +11,11 @@ namespace MovieReviewsBackend
 {
     public partial class Startup
     {
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSignalR();
+        }
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
