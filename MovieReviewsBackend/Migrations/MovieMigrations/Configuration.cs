@@ -56,6 +56,8 @@ namespace MovieReviewsBackend.Migrations.MovieMigrations
                 DateCreated = DateTime.Now,
                 StarRating = 1
             });
+
+            context.SaveChanges();
         }
     }
 }
