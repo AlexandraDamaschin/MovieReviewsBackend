@@ -331,6 +331,8 @@ namespace MovieReviewsBackend.Controllers
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            //create 2 roler : user, administrator
+            UserManager.AddToRole(user.Id, "role type");
 
             if (!result.Succeeded)
             {
