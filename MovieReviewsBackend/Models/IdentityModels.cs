@@ -26,7 +26,6 @@ namespace MovieReviewsBackend.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        public DbSet <Reviewer> Reviewers { get; set; }
 
         public static ApplicationDbContext Create()
         {

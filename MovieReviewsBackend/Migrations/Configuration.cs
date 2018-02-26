@@ -1,5 +1,7 @@
 namespace MovieReviewsBackend.Migrations
 {
+    using MovieReviewsBackend.Models;
+    using MovieReviewsBackend.Models.MovieModels;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,18 +16,18 @@ namespace MovieReviewsBackend.Migrations
 
         protected override void Seed(MovieReviewsBackend.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+        }
+        //seedReviews
+        private void SeedUser(ApplicationDbContext context)
+        {
+            context.AspNetUsers.AddOrUpdate(u => u.Id, new Review
+            {
+                UserId = 6,
+                ImdbId = "tt0099785",
+                ReviewComment = "uuu",
+                DateCreated = DateTime.Now,
+                StarRating = 5
+            });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
         }
     }
-}
