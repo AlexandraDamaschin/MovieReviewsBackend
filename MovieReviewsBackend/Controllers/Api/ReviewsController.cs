@@ -94,7 +94,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
             return Ok();
         }
-
+        //Put to update database??
 
         //DELETE /api/Reviews/1
         [HttpDelete]
