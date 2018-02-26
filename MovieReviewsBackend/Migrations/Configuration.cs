@@ -17,8 +17,9 @@ namespace MovieReviewsBackend.Migrations
         {
             //seeding methods
             //SeedUsers(context);
-            //SeedRoles(context);
+           // SeedRoles(context);
         }
+
         //seed roles
         private void SeedRoles(ApplicationDbContext context)
         {
