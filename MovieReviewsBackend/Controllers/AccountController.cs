@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -331,8 +330,9 @@ namespace MovieReviewsBackend.Controllers
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-            //create 2 roler : user, administrator
-            UserManager.AddToRole(user.Id, "role type");
+            //asign all user which register to be by default 
+            //role= User
+            UserManager.AddToRole(user.Id, "User");
 
             if (!result.Succeeded)
             {
