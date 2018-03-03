@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
+    [Authorize(Roles = "User")]
     public class ReviewsController : ApiController
     {
         private MovieDbContext _movie;
