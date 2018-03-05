@@ -16,8 +16,8 @@ namespace MovieReviewsBackend.Migrations
         protected override void Seed(MovieReviewsBackend.Models.ApplicationDbContext context)
         {
             //seeding methods
-            //SeedUsers(context);
-           // SeedRoles(context);
+           SeedUsers(context);
+           //SeedRoles(context);
         }
 
         //seed roles
