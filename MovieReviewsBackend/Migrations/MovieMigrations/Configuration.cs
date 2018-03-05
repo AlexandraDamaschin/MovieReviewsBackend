@@ -17,7 +17,7 @@ namespace MovieReviewsBackend.Migrations.MovieMigrations
         protected override void Seed(MovieReviewsBackend.Models.MovieModels.MovieDbContext context)
         {
             //seding methods
-            // SeedReviews(context);
+             SeedReviews(context);
         }
 
         //seedReviews
