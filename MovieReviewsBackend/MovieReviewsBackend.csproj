@@ -580,6 +580,7 @@
     <Compile Include="Controllers\Api\ReviewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DAL\ReviewRepository.cs" />
     <Compile Include="DTOs\ReviewDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
