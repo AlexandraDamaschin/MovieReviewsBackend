@@ -577,9 +577,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ReviewRepoController.cs" />
     <Compile Include="Controllers\Api\ReviewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DAL\IReviewRepository.cs" />
     <Compile Include="DAL\ReviewRepository.cs" />
     <Compile Include="DTOs\ReviewDto.cs" />
     <Compile Include="Global.asax.cs">
