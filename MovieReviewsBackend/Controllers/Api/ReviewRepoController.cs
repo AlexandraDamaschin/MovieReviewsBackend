@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Mvc;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
@@ -11,6 +12,12 @@ namespace MovieReviewsBackend.Controllers.Api
     {
         private MovieDbContext db = new MovieDbContext();
 
+        private IReviewRepository reviewRepo;
+
+        public ReviewRepoController()
+        {
+            reviewRepo = new DAL.ReviewRepository(new MovieDbContext());
+        }
         //GET /api/Reviews
         public IQueryable<Review> GetReviews()
         {
@@ -26,7 +33,6 @@ namespace MovieReviewsBackend.Controllers.Api
             {
                 return NotFound();
             }
-
             return Ok(review);
         }
     }
