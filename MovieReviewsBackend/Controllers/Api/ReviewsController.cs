@@ -8,6 +8,7 @@ using System.Web.Http;
 namespace MovieReviewsBackend.Controllers.Api
 {
     [Authorize(Roles = "User")]
+    [RoutePrefix("api/Reviews")]
     public class ReviewsController : ApiController
     {
         private MovieDbContext _movie;
@@ -19,6 +20,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
 
         //GET /api/Reviews
+        [Route("GetReviews")]
         public IHttpActionResult GetReviews()
         {
             var reviewQuery = _movie.Reviews;
@@ -33,6 +35,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //GET /api/Reviews/1
+        [Route("GetReviews/{id}")]
         public IHttpActionResult GetReview(int id)
         {
             var review = _movie.Reviews.SingleOrDefault(r => r.ReviewId == id);
@@ -58,6 +61,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //POST /api/Reviews
+        [Route("CreateReview")]
         [HttpPost]
         public IHttpActionResult CreateReview(ReviewDto reviewDto)
         {
@@ -75,6 +79,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //PUT /api/Reviews/1
+        [Route("UpdateReview/{id}")]
         [HttpPut]
         public IHttpActionResult UpdateReview(int id, ReviewDto reviewDto)
         {
@@ -95,6 +100,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
 
         //DELETE /api/Reviews/1
+        [Route("DeleteReview/{id}")]
         [HttpDelete]
         public IHttpActionResult DeleteReview(int id)
         {

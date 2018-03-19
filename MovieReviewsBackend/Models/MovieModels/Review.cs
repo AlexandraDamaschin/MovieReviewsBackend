@@ -16,6 +16,7 @@ namespace MovieReviewsBackend.Models.MovieModels
         public int ReviewId { get; set; }
 
         [Display(Name = "User Id")]
+        [ForeignKey("associatedUser")]
         public int UserId { get; set; }
 
         [Display(Name = "Imdb Id")]
@@ -33,5 +34,8 @@ namespace MovieReviewsBackend.Models.MovieModels
 
         [Display(Name = "Star Rating")]
         public int StarRating { get; set; }
+
+        public virtual ApplicationUser associatedUser { get; set; }
+
     }
 }

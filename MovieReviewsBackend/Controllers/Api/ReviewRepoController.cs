@@ -2,13 +2,14 @@
 using MovieReviewsBackend.Models.MovieModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Description;
-using System.Web.Mvc;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
+    [Authorize(Roles = "User")]
+    //set prefix of the route
+    [RoutePrefix("api/ReviewRepo")]
+
     public class ReviewRepoController : ApiController
     {
         //set context to repo
@@ -24,12 +25,14 @@ namespace MovieReviewsBackend.Controllers.Api
 
         //GET /api/ReviewRepo
         //get all reviews
+        [Route("GetReviews")]
         public List<Review> GetReviews()
         {
             return reviewRepo.GetReviews();
         }
 
         //GET /api/ReviewRepo/1
+        [Route("GetReviewById/{reviewId}")]
         public Review GetReviewById(int reviewId)
         {
             var review = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
@@ -37,6 +40,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //GET /api/ReviewRepo/imdbid
+        [Route("GetReviewMovieById/{imdbId}")]
         public Review GetReviewMovieById(string imdbId)
         {
             var review = _movie.Reviews.ToList().Where(r => r.ImdbId == imdbId);
@@ -44,6 +48,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //POST /api/ReviewRepo
+        [Route("CreateReview")]
         public void CreateReview(Review review)
         {
             _movie.Reviews.Add(review);
@@ -51,6 +56,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //PUT /api/ReviewRepo/1
+        [Route("UpdateReview/{reviewId}")]
         public void UpdateReview(int reviewId)
         {
             var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
@@ -58,7 +64,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //DELETE /api/ReviewRepo/1
-
+        [Route("DeleteReview/{reviewId}")]
         public void DeleteReview(int reviewId)
         {
             var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
