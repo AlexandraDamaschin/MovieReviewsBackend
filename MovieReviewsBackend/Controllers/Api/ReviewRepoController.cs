@@ -15,7 +15,7 @@ namespace MovieReviewsBackend.Controllers.Api
         //set context to repo
         private ReviewRepository reviewRepo;
 
-        private MovieDbContext _movie;
+        //private MovieDbContext _movie;
 
         //constructor 
         public ReviewRepoController()
@@ -35,7 +35,7 @@ namespace MovieReviewsBackend.Controllers.Api
         [Route("GetReviewRepoById/{reviewId}")]
         public Review GetReviewById(int reviewId)
         {
-            var review = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
+            //var review = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
             return reviewRepo.GetReviewById(reviewId);
         }
 
@@ -43,7 +43,7 @@ namespace MovieReviewsBackend.Controllers.Api
         [Route("GetReviewRepoMovieById/{imdbId}")]
         public Review GetReviewMovieById(string imdbId)
         {
-            var review = _movie.Reviews.ToList().Where(r => r.ImdbId == imdbId);
+            //var review = _movie.Reviews.ToList().Where(r => r.ImdbId == imdbId);
             return reviewRepo.GetReviewMovieById(imdbId);
         }
 
@@ -51,7 +51,7 @@ namespace MovieReviewsBackend.Controllers.Api
         [Route("CreateReviewRepo")]
         public void CreateReview(Review review)
         {
-            _movie.Reviews.Add(review);
+            //_movie.Reviews.Add(review);
             reviewRepo.CreateReview(review);
         }
 
@@ -59,7 +59,7 @@ namespace MovieReviewsBackend.Controllers.Api
         [Route("UpdateReviewRepo/{reviewId}")]
         public void UpdateReview(int reviewId)
         {
-            var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
+            //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
             reviewRepo.UpdateReview(reviewId);
         }
 
@@ -67,7 +67,7 @@ namespace MovieReviewsBackend.Controllers.Api
         [Route("DeleteReviewRepo/{reviewId}")]
         public void DeleteReview(int reviewId)
         {
-            var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
+            //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
             reviewRepo.DeleteReview(reviewId);
         }
 
