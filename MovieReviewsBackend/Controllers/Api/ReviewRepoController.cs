@@ -1,4 +1,5 @@
 ﻿using MovieReviewsBackend.DAL;
+using MovieReviewsBackend.DTOs;
 using MovieReviewsBackend.Models.MovieModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,17 @@ namespace MovieReviewsBackend.Controllers.Api
         //GET /api/ReviewRepo
         //get all reviews
         [Route("GetReviewsRepo")]
-        public List<Review> GetReviews()
+        [HttpGet]
+        public IHttpActionResult GetReviews()
         {
-            return reviewRepo.GetReviews();
+            var review = reviewRepo.GetReviews();
+            var result = AutoMapper.Mapper.Map<List<ReviewDto>>(review);
+            return Ok(result);
         }
 
         //GET /api/ReviewRepo/1
         [Route("GetReviewRepoById/{reviewId}")]
+        [HttpGet]
         public Review GetReviewById(int reviewId)
         {
             return reviewRepo.GetReviewById(reviewId);
@@ -38,6 +43,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
         //GET /api/ReviewRepo/imdbid
         [Route("GetReviewRepoMovieById/{imdbId}")]
+        [HttpGet]
         public Review GetReviewMovieById(string imdbId)
         {
             return reviewRepo.GetReviewMovieById(imdbId);
