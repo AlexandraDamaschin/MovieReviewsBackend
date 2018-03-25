@@ -13,6 +13,7 @@ namespace MovieReviewsBackend.Controllers.Api
     {
         private MovieDbContext _movie;
 
+        //constructor 
         public ReviewsController()
         {
             _movie = new MovieDbContext();
@@ -47,7 +48,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //GET /api/Reviews/imdbid
-        [Route("api/Reviews/{imdbId}")]
+        [Route("GetReviewMovie/{imdbId}")]
         public IHttpActionResult GetReviewMovie(string imdbId)
         {
             var reviewQuery = _movie.Reviews;

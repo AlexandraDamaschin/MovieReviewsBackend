@@ -25,14 +25,14 @@ namespace MovieReviewsBackend.Controllers.Api
 
         //GET /api/ReviewRepo
         //get all reviews
-        [Route("GetReviews")]
+        [Route("GetReviewsRepo")]
         public List<Review> GetReviews()
         {
             return reviewRepo.GetReviews();
         }
 
         //GET /api/ReviewRepo/1
-        [Route("GetReviewById/{reviewId}")]
+        [Route("GetReviewRepoById/{reviewId}")]
         public Review GetReviewById(int reviewId)
         {
             var review = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
@@ -40,7 +40,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //GET /api/ReviewRepo/imdbid
-        [Route("GetReviewMovieById/{imdbId}")]
+        [Route("GetReviewRepoMovieById/{imdbId}")]
         public Review GetReviewMovieById(string imdbId)
         {
             var review = _movie.Reviews.ToList().Where(r => r.ImdbId == imdbId);
@@ -48,7 +48,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //POST /api/ReviewRepo
-        [Route("CreateReview")]
+        [Route("CreateReviewRepo")]
         public void CreateReview(Review review)
         {
             _movie.Reviews.Add(review);
@@ -56,7 +56,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //PUT /api/ReviewRepo/1
-        [Route("UpdateReview/{reviewId}")]
+        [Route("UpdateReviewRepo/{reviewId}")]
         public void UpdateReview(int reviewId)
         {
             var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
@@ -64,7 +64,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
         //DELETE /api/ReviewRepo/1
-        [Route("DeleteReview/{reviewId}")]
+        [Route("DeleteReviewRepo/{reviewId}")]
         public void DeleteReview(int reviewId)
         {
             var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
