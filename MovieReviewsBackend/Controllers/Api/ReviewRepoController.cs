@@ -15,8 +15,6 @@ namespace MovieReviewsBackend.Controllers.Api
         //set context to repo
         private ReviewRepository reviewRepo;
 
-        //private MovieDbContext _movie;
-
         //constructor 
         public ReviewRepoController()
         {
@@ -35,7 +33,6 @@ namespace MovieReviewsBackend.Controllers.Api
         [Route("GetReviewRepoById/{reviewId}")]
         public Review GetReviewById(int reviewId)
         {
-            //var review = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
             return reviewRepo.GetReviewById(reviewId);
         }
 
@@ -43,12 +40,12 @@ namespace MovieReviewsBackend.Controllers.Api
         [Route("GetReviewRepoMovieById/{imdbId}")]
         public Review GetReviewMovieById(string imdbId)
         {
-            //var review = _movie.Reviews.ToList().Where(r => r.ImdbId == imdbId);
             return reviewRepo.GetReviewMovieById(imdbId);
         }
 
         //POST /api/ReviewRepo
         [Route("CreateReviewRepo")]
+        [HttpPost]
         public void CreateReview(Review review)
         {
             //_movie.Reviews.Add(review);
@@ -57,6 +54,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
         //PUT /api/ReviewRepo/1
         [Route("UpdateReviewRepo/{reviewId}")]
+        [HttpPut]
         public void UpdateReview(int reviewId)
         {
             //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
@@ -65,6 +63,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
         //DELETE /api/ReviewRepo/1
         [Route("DeleteReviewRepo/{reviewId}")]
+        [HttpDelete]
         public void DeleteReview(int reviewId)
         {
             //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
