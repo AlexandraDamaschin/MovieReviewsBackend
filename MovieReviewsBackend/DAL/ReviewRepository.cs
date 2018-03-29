@@ -1,8 +1,6 @@
-﻿using MovieReviewsBackend.Models;
-using MovieReviewsBackend.Models.MovieModels;
+﻿using MovieReviewsBackend.Models.MovieModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 
 namespace MovieReviewsBackend.DAL
 {
@@ -39,7 +37,7 @@ namespace MovieReviewsBackend.DAL
         }
 
         //insert a new review
-        public void CreateReview(Review review)
+        public Review CreateReview(Review review)
         {
             //conect users from application db context to movie context
             //var query = (from a in app_context.Users
@@ -48,22 +46,26 @@ namespace MovieReviewsBackend.DAL
             //             select new { a, c }).ToList();
             context.Reviews.Add(review);
             context.SaveChanges();
+            return context.Reviews.Add(review);
         }
 
         //update review
-        public void UpdateReview(int reviewId)
+        public Review UpdateReview(int reviewId)
         {
             Review review = context.Reviews.Find(reviewId);
             context.Reviews.Add(review);
             context.SaveChanges();
+            return context.Reviews.Add(review);
         }
 
+
         //delete a review
-        public void DeleteReview(int reviewId)
+        public Review DeleteReview(int reviewId)
         {
             Review review = context.Reviews.Find(reviewId);
             context.Reviews.Remove(review);
             context.SaveChanges();
+            return context.Reviews.Remove(review);
         }
 
         //Save should call context.SaveChanges

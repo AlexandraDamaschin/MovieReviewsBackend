@@ -2,7 +2,6 @@
 using MovieReviewsBackend.DTOs;
 using MovieReviewsBackend.Models.MovieModels;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 
 namespace MovieReviewsBackend.Controllers.Api
@@ -45,7 +44,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
         //this ones break
 
-        //GET /api/ReviewRepo/imdbid
+        //GET /api/ReviewRepo/GetReviewRepoMovieById/imdbid
         [Route("GetReviewRepoMovieById/{imdbId}")]
         [HttpGet]
         public Review GetReviewMovieById(string imdbId)
@@ -54,35 +53,48 @@ namespace MovieReviewsBackend.Controllers.Api
             var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
             return reviewRepo.GetReviewMovieById(imdbId);
         }
-
-        //break
-        //POST /api/ReviewRepo
+        
+        //POST /api/ReviewRepo/CreateReviewRepo
         [Route("CreateReviewRepo")]
         [HttpPost]
-        public void CreateReview(Review review)
+        public Review CreateReview(Review review)
         {
-            //_movie.Reviews.Add(review);
-            reviewRepo.CreateReview(review);
+            var reviewMovie = reviewRepo.CreateReview(review);
+            var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
+            return reviewRepo.CreateReview(review);
+
+            //reviewRepo.CreateReview(review);
         }
 
         //break
-        //PUT /api/ReviewRepo/1
+        //PUT /api/ReviewRepo/UpdateReviewRepo/1
         [Route("UpdateReviewRepo/{reviewId}")]
         [HttpPut]
-        public void UpdateReview(int reviewId)
+        public Review UpdateReview(int reviewId)
         {
+            var reviewMovie = reviewRepo.UpdateReview(reviewId);
+            var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
+            return reviewRepo.UpdateReview(reviewId);
+
+
             //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
-            reviewRepo.UpdateReview(reviewId);
+            //reviewRepo.UpdateReview(reviewId);
         }
 
-        //break
-        //DELETE /api/ReviewRepo/1
+
+        //this one breaks
+        //DELETE /api/ReviewRepo/DeleteReviewRepo/1
         [Route("DeleteReviewRepo/{reviewId}")]
         [HttpDelete]
-        public void DeleteReview(int reviewId)
+        public Review DeleteReview(int reviewId)
         {
+
+            var reviewMovie = reviewRepo.DeleteReview(reviewId);
+            var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
+            return reviewRepo.DeleteReview(reviewId);
+
             //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
-            reviewRepo.DeleteReview(reviewId);
+            //reviewRepo.DeleteReview(reviewId);
         }
 
         //save changes
