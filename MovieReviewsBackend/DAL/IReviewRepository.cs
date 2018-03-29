@@ -10,9 +10,9 @@ namespace MovieReviewsBackend.DAL
         Review GetReviewById(int reviewId);
         Review GetReviewMovieById(string imdbId);
 
-        void CreateReview(Review review);
-        void UpdateReview(int reviewId);
-        void DeleteReview(int reviewId);
+        Review CreateReview(Review review);
+        Review UpdateReview(int reviewId);
+        Review DeleteReview(int reviewId);
 
         void Save();
     }
