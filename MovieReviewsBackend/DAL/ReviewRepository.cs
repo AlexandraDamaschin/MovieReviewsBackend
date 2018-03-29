@@ -1,4 +1,5 @@
-﻿using MovieReviewsBackend.Models.MovieModels;
+﻿using MovieReviewsBackend.Models;
+using MovieReviewsBackend.Models.MovieModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -7,11 +8,16 @@ namespace MovieReviewsBackend.DAL
 {
     public class ReviewRepository : IReviewRepository
     {
+        //movie context
         private MovieDbContext context;
 
-        public ReviewRepository(MovieDbContext context)
+        //app context
+        //private ApplicationDbContext app_context;
+
+        public ReviewRepository(MovieDbContext context) //, ApplicationDbContext app_context)
         {
             this.context = context;
+            //this.app_context = app_context;
         }
 
         //get all reviews
@@ -35,6 +41,11 @@ namespace MovieReviewsBackend.DAL
         //insert a new review
         public void CreateReview(Review review)
         {
+            //conect users from application db context to movie context
+            //var query = (from a in app_context.Users
+            //             join c in context.Reviews
+            //             on a.Id equals c.UserId
+            //             select new { a, c }).ToList();
             context.Reviews.Add(review);
             context.SaveChanges();
         }

@@ -16,10 +16,6 @@ namespace MovieReviewsBackend
         {
             // Web API configuration and services
 
-            // Configure Web API to use only bearer token authentication.
-            //config.SuppressDefaultHostAuthentication();
-            //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
             //change json format to camelcase for using in java
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -46,6 +42,7 @@ namespace MovieReviewsBackend
 
 
         }
+
         //for authorized login
         public class PreflightRequestsHandler : DelegatingHandler
         {

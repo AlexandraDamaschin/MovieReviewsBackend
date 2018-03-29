@@ -20,7 +20,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
 
-        //GET /api/Reviews
+        //GET /api/Reviews/GetReviews
         [Route("GetReviews")]
         public IHttpActionResult GetReviews()
         {
@@ -35,7 +35,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
         }
 
-        //GET /api/Reviews/1
+        //GET /api/Reviews/GetReviews/1
         [Route("GetReviews/{id}")]
         public IHttpActionResult GetReview(int id)
         {
@@ -47,7 +47,7 @@ namespace MovieReviewsBackend.Controllers.Api
             return Ok(Mapper.Map<Review, ReviewDto>(review));
         }
 
-        //GET /api/Reviews/imdbid
+        //GET /api/Reviews/GetReviewMovie/tt45717
         [Route("GetReviewMovie/{imdbId}")]
         public IHttpActionResult GetReviewMovie(string imdbId)
         {
@@ -61,7 +61,7 @@ namespace MovieReviewsBackend.Controllers.Api
             return Ok(reviewDtos);
         }
 
-        //POST /api/Reviews
+        //POST /api/Reviews/CreateReview
         [Route("CreateReview")]
         [HttpPost]
         public IHttpActionResult CreateReview(ReviewDto reviewDto)
@@ -79,7 +79,7 @@ namespace MovieReviewsBackend.Controllers.Api
 
         }
 
-        //PUT /api/Reviews/1
+        //PUT /api/Reviews/UpdateReview/1
         [Route("UpdateReview/{id}")]
         [HttpPut]
         public IHttpActionResult UpdateReview(int id, ReviewDto reviewDto)
@@ -100,7 +100,7 @@ namespace MovieReviewsBackend.Controllers.Api
         }
 
 
-        //DELETE /api/Reviews/1
+        //DELETE /api/Reviews/DeleteReview/1
         [Route("DeleteReview/{id}")]
         [HttpDelete]
         public IHttpActionResult DeleteReview(int id)

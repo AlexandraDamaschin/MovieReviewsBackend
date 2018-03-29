@@ -38,17 +38,24 @@ namespace MovieReviewsBackend.Controllers.Api
         [HttpGet]
         public Review GetReviewById(int reviewId)
         {
+            var review = reviewRepo.GetReviewById(reviewId);
+            var result = AutoMapper.Mapper.Map<Review,ReviewDto>(review);
             return reviewRepo.GetReviewById(reviewId);
         }
+
+        //this ones break
 
         //GET /api/ReviewRepo/imdbid
         [Route("GetReviewRepoMovieById/{imdbId}")]
         [HttpGet]
         public Review GetReviewMovieById(string imdbId)
         {
+            var reviewMovie = reviewRepo.GetReviewMovieById(imdbId);
+            var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
             return reviewRepo.GetReviewMovieById(imdbId);
         }
 
+        //break
         //POST /api/ReviewRepo
         [Route("CreateReviewRepo")]
         [HttpPost]
@@ -58,6 +65,7 @@ namespace MovieReviewsBackend.Controllers.Api
             reviewRepo.CreateReview(review);
         }
 
+        //break
         //PUT /api/ReviewRepo/1
         [Route("UpdateReviewRepo/{reviewId}")]
         [HttpPut]
@@ -67,6 +75,7 @@ namespace MovieReviewsBackend.Controllers.Api
             reviewRepo.UpdateReview(reviewId);
         }
 
+        //break
         //DELETE /api/ReviewRepo/1
         [Route("DeleteReviewRepo/{reviewId}")]
         [HttpDelete]
