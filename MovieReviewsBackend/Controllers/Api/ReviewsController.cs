@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
-    [Authorize(Roles = "User")]
+    //[Authorize(Roles = "User")]
     [RoutePrefix("api/Reviews")]
     public class ReviewsController : ApiController
     {
