@@ -18,7 +18,7 @@ namespace MovieReviewsBackend.Controllers.Api
         //constructor 
         public ReviewRepoController()
         {
-            reviewRepo = new DAL.ReviewRepository(new MovieDbContext());
+            reviewRepo = new ReviewRepository(new MovieDbContext());
         }
 
         //GET /api/ReviewRepo
@@ -29,6 +29,7 @@ namespace MovieReviewsBackend.Controllers.Api
         {
             var review = reviewRepo.GetReviews();
             var result = AutoMapper.Mapper.Map<List<ReviewDto>>(review);
+            reviewRepo.Save();
             return Ok(result);
         }
 
@@ -39,18 +40,20 @@ namespace MovieReviewsBackend.Controllers.Api
         {
             var review = reviewRepo.GetReviewById(reviewId);
             var result = AutoMapper.Mapper.Map<Review,ReviewDto>(review);
+            reviewRepo.Save();
             return reviewRepo.GetReviewById(reviewId);
         }
 
         //this ones break
 
-        //GET /api/ReviewRepo/GetReviewRepoMovieById/imdbid
+        //GET /api/ReviewRepo/GetReviewRepoMovieById/tt0099785
         [Route("GetReviewRepoMovieById/{imdbId}")]
         [HttpGet]
         public Review GetReviewMovieById(string imdbId)
         {
             var reviewMovie = reviewRepo.GetReviewMovieById(imdbId);
             var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
+            reviewRepo.Save();
             return reviewRepo.GetReviewMovieById(imdbId);
         }
         
@@ -61,24 +64,22 @@ namespace MovieReviewsBackend.Controllers.Api
         {
             var reviewMovie = reviewRepo.CreateReview(review);
             var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
+            reviewRepo.Save();
             return reviewRepo.CreateReview(review);
 
             //reviewRepo.CreateReview(review);
         }
 
-        //break
+        //it actually creates a new review
         //PUT /api/ReviewRepo/UpdateReviewRepo/1
         [Route("UpdateReviewRepo/{reviewId}")]
         [HttpPut]
-        public Review UpdateReview(int reviewId)
+        public Review UpdateReview(int reviewId, Review review)
         {
-            var reviewMovie = reviewRepo.UpdateReview(reviewId);
+            var reviewMovie = reviewRepo.UpdateReview(reviewId, review);
             var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
-            return reviewRepo.UpdateReview(reviewId);
-
-
-            //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
-            //reviewRepo.UpdateReview(reviewId);
+            reviewRepo.Save();
+            return reviewMovie;
         }
 
 
@@ -89,18 +90,13 @@ namespace MovieReviewsBackend.Controllers.Api
         public Review DeleteReview(int reviewId)
         {
 
-            var reviewMovie = reviewRepo.DeleteReview(reviewId);
-            var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
-            return reviewRepo.DeleteReview(reviewId);
+            var deletedMovie = reviewRepo.DeleteReview(reviewId);
+            reviewRepo.Save();
+            return deletedMovie;
 
             //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
             //reviewRepo.DeleteReview(reviewId);
         }
-
-        //save changes
-        public void Save()
-        {
-            reviewRepo.Save();
-        }
+        
     }
 }

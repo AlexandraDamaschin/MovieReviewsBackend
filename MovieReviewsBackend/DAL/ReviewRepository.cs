@@ -33,13 +33,7 @@ namespace MovieReviewsBackend.DAL
         //get reviews by movid id
         public Review GetReviewMovieById(string imdbId)
         {
-            var reviewQuery = context.Reviews;
-
-            var review = reviewQuery
-                .ToList()
-                .Where(r => r.ImdbId == imdbId);
-
-            return context.Reviews.Find(review);
+            return context.Reviews.Find(imdbId);
         }
 
         //insert a new review
@@ -51,16 +45,14 @@ namespace MovieReviewsBackend.DAL
             //             on a.Id equals c.UserId
             //             select new { a, c }).ToList();
             context.Reviews.Add(review);
-            context.SaveChanges();
             return context.Reviews.Add(review);
         }
 
         //update review
-        public Review UpdateReview(int reviewId)
+        public Review UpdateReview(int reviewId, Review review)
         {
-            Review review = context.Reviews.Find(reviewId);
+            var reviewInDb = context.Reviews.Find(reviewId);
             context.Reviews.Add(review);
-           // context.SaveChanges();
             return context.Reviews.Add(review);
         }
 
@@ -68,9 +60,8 @@ namespace MovieReviewsBackend.DAL
         //delete a review
         public Review DeleteReview(int reviewId)
         {
-            Review review = context.Reviews.Find(reviewId);
+            var review = context.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
             context.Reviews.Remove(review);
-          //  context.SaveChanges();
             return context.Reviews.Remove(review);
         }
 

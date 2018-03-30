@@ -1,4 +1,5 @@
-﻿using MovieReviewsBackend.Models.MovieModels;
+﻿using MovieReviewsBackend.DTOs;
+using MovieReviewsBackend.Models.MovieModels;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace MovieReviewsBackend.DAL
         Review GetReviewMovieById(string imdbId);
 
         Review CreateReview(Review review);
-        Review UpdateReview(int reviewId);
+        Review UpdateReview(int reviewId, Review review);
         Review DeleteReview(int reviewId);
 
         void Save();
