@@ -33,7 +33,13 @@ namespace MovieReviewsBackend.DAL
         //get reviews by movid id
         public Review GetReviewMovieById(string imdbId)
         {
-            return context.Reviews.Find(imdbId);
+            var reviewQuery = context.Reviews;
+
+            var review = reviewQuery
+                .ToList()
+                .Where(r => r.ImdbId == imdbId);
+
+            return context.Reviews.Find(review);
         }
 
         //insert a new review
@@ -54,7 +60,7 @@ namespace MovieReviewsBackend.DAL
         {
             Review review = context.Reviews.Find(reviewId);
             context.Reviews.Add(review);
-            context.SaveChanges();
+           // context.SaveChanges();
             return context.Reviews.Add(review);
         }
 
@@ -64,7 +70,7 @@ namespace MovieReviewsBackend.DAL
         {
             Review review = context.Reviews.Find(reviewId);
             context.Reviews.Remove(review);
-            context.SaveChanges();
+          //  context.SaveChanges();
             return context.Reviews.Remove(review);
         }
 

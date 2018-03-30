@@ -16,14 +16,10 @@ namespace MovieReviewsBackend.Models.MovieModels
         public int ReviewId { get; set; }
 
         [Display(Name = "User Id")]
-       // [ForeignKey("associatedUser")]
         public int UserId { get; set; }
 
         [Display(Name = "Imdb Id")]
         public string ImdbId { get; set; }
-
-        [Display(Name = "Image Url")]
-        public string ImageUrl { get; set; }
 
         [Display(Name = "Review Comment")]
         public string ReviewComment { get; set; }
@@ -34,8 +30,5 @@ namespace MovieReviewsBackend.Models.MovieModels
 
         [Display(Name = "Star Rating")]
         public int StarRating { get; set; }
-
-      //  public virtual ApplicationUser associatedUser { get; set; }
-
     }
 }

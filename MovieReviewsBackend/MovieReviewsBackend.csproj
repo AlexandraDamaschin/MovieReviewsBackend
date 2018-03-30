@@ -614,6 +614,10 @@
     <Compile Include="Migrations\MovieMigrations\201802261530105_ImageUrlColumn.Designer.cs">
       <DependentUpon>201802261530105_ImageUrlColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\MovieMigrations\201803301904431_DeleteImageField.cs" />
+    <Compile Include="Migrations\MovieMigrations\201803301904431_DeleteImageField.Designer.cs">
+      <DependentUpon>201803301904431_DeleteImageField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\MovieMigrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -746,6 +750,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\MovieMigrations\201802261530105_ImageUrlColumn.resx">
       <DependentUpon>201802261530105_ImageUrlColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\MovieMigrations\201803301904431_DeleteImageField.resx">
+      <DependentUpon>201803301904431_DeleteImageField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
