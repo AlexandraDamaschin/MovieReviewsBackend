@@ -44,17 +44,17 @@ namespace MovieReviewsBackend.Controllers.Api
             return Ok(result);
         }
 
-        //this ones break
+        //return just the first review
 
         //GET /api/ReviewRepo/GetReviewRepoMovieById/tt0099785
         [Route("GetReviewRepoMovieById/{imdbId}")]
         [HttpGet]
-        public Review GetReviewMovieById(string imdbId)
+        public IHttpActionResult GetReviewMovieById(string imdbId)
         {
             var reviewMovie = reviewRepo.GetReviewMovieById(imdbId);
             var result = AutoMapper.Mapper.Map<Review, ReviewDto>(reviewMovie);
             reviewRepo.Save();
-            return reviewRepo.GetReviewMovieById(imdbId);
+            return Ok(result);
         }
         
         //POST /api/ReviewRepo/CreateReviewRepo

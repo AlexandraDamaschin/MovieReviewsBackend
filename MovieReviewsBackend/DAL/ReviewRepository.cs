@@ -33,7 +33,9 @@ namespace MovieReviewsBackend.DAL
         //get reviews by movid id
         public Review GetReviewMovieById(string imdbId)
         {
-            Review review = context.Reviews.Find(imdbId);
+            
+            Review review = context.Reviews.ToList().Find(r => r.ImdbId == imdbId);
+
             if(review ==null)
             {
                 return null;
