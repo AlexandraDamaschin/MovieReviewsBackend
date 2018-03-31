@@ -10,5 +10,6 @@ namespace MovieReviewsBackend.DTOs
         public string ReviewComment { get; set; }
         public DateTime? DateCreated { get; set; }
         public int StarRating { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
