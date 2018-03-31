@@ -67,9 +67,9 @@ namespace MovieReviewsBackend.DAL
         //delete a review
         public Review DeleteReview(int reviewId)
         {
-            var review = context.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
+            var review = context.Reviews.Find(reviewId);
             context.Reviews.Remove(review);
-            return context.Reviews.Remove(review);
+            return review;
         }
 
         //Save should call context.SaveChanges
