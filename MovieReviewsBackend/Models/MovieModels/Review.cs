@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace MovieReviewsBackend.Models.MovieModels
 {
@@ -30,5 +27,8 @@ namespace MovieReviewsBackend.Models.MovieModels
 
         [Display(Name = "Star Rating")]
         public int StarRating { get; set; }
+
+        [Display(Name = "Image Url")]
+        public string ImageUrl { get; set; }
     }
 }

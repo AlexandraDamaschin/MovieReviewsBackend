@@ -618,6 +618,10 @@
     <Compile Include="Migrations\MovieMigrations\201803301904431_DeleteImageField.Designer.cs">
       <DependentUpon>201803301904431_DeleteImageField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\MovieMigrations\201803311910213_FieldNeeded.cs" />
+    <Compile Include="Migrations\MovieMigrations\201803311910213_FieldNeeded.Designer.cs">
+      <DependentUpon>201803311910213_FieldNeeded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\MovieMigrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -753,6 +757,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\MovieMigrations\201803301904431_DeleteImageField.resx">
       <DependentUpon>201803301904431_DeleteImageField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\MovieMigrations\201803311910213_FieldNeeded.resx">
+      <DependentUpon>201803311910213_FieldNeeded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
