@@ -21,7 +21,7 @@ namespace MovieReviewsBackend.Controllers.Api
             reviewRepo = new ReviewRepository(new MovieDbContext());
         }
 
-        //GET /api/ReviewRepo
+        //GET /api/ReviewRepo/GetReviewsRepo
         //get all reviews
         [Route("GetReviewsRepo")]
         [HttpGet]
@@ -33,15 +33,15 @@ namespace MovieReviewsBackend.Controllers.Api
             return Ok(result);
         }
 
-        //GET /api/ReviewRepo/1
+        //GET /api/ReviewRepo/GetReviewRepoById/1
         [Route("GetReviewRepoById/{reviewId}")]
         [HttpGet]
-        public Review GetReviewById(int reviewId)
+        public IHttpActionResult GetReviewById(int reviewId)
         {
             var review = reviewRepo.GetReviewById(reviewId);
             var result = AutoMapper.Mapper.Map<Review,ReviewDto>(review);
             reviewRepo.Save();
-            return reviewRepo.GetReviewById(reviewId);
+            return Ok(result);
         }
 
         //this ones break

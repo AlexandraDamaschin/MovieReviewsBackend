@@ -33,7 +33,12 @@ namespace MovieReviewsBackend.DAL
         //get reviews by movid id
         public Review GetReviewMovieById(string imdbId)
         {
-            return context.Reviews.Find(imdbId);
+            Review review = context.Reviews.Find(imdbId);
+            if(review ==null)
+            {
+                return null;
+            }
+            return review;
         }
 
         //insert a new review
