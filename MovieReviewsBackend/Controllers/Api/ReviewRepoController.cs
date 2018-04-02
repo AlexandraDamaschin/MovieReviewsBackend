@@ -97,6 +97,5 @@ namespace MovieReviewsBackend.Controllers.Api
             //var reviewInDb = _movie.Reviews.SingleOrDefault(r => r.ReviewId == reviewId);
             //reviewRepo.DeleteReview(reviewId);
         }
-        
     }
 }
