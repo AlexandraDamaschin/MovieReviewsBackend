@@ -20,8 +20,8 @@ namespace MovieReviewsBackend
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //auth
-            //GlobalConfiguration.Configure(FilterConfig.Configure);
-            //GlobalConfiguration.Configuration.EnsureInitialized();
+            GlobalConfiguration.Configure(FilterConfig.Configure);
+            GlobalConfiguration.Configuration.EnsureInitialized();
         }
     }
 }
