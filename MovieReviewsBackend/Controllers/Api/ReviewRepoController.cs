@@ -6,7 +6,7 @@ using System.Web.Http;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
-    [Authorize(Roles = "User")]
+  //  [Authorize(Roles = "User")]
     //set prefix of the route
     [RoutePrefix("api/ReviewRepo")]
 
