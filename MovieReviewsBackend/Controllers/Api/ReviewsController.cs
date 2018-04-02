@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace MovieReviewsBackend.Controllers.Api
 {
-    //[Authorize(Roles = "User")]
+    //[Authorize(Roles = "User")] - Commented out because Login/Registration not 100% functional.
     [RoutePrefix("api/Reviews")]
     public class ReviewsController : ApiController
     {
